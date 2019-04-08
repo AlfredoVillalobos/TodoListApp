@@ -1,0 +1,7 @@
+<nav class="navbar navbar-light bg-light bg-dark">
+  <p class="navbar-brand">Todo list</p>
+  <p class="navbar-brand float-left">
+    Tareas completadas
+    <span><%= current_user.completed_tasks(current_user).count if current_user.present? %></span> 
+  </p>
+</nav>

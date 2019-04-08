@@ -1,0 +1,22 @@
+<div class='container'>
+  <h1><%= current_user.email %></h1>
+  <h2> Listado de Tareas </h2>
+  <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+  <div class='row'>
+    <% @homewokrs.each_slice(4) do |homework| %>
+      <% homework.each do |h| %>
+        <div class='col', style ='margin:10px'>
+          <div class='card'>
+            <%= image_tag "/img/#{h.photo}", class:'image-fluid', style:'width:200px' %>
+            <div class='body'>
+              <h5><%= h.name %></h5>
+              <%= link_to 'Completada', registries_path(id:h.id, carried_out: true, unrealized: false), method: :post, class:"btn btn-primary" %>
+              <%= link_to 'No Completada', registry_path(id:h.id, carried_out: false, unrealized:true), method: :put, class:'btn btn-warning'%>
+              <%= link_to 'Detalle', homework_path(id: h.id), class: 'btn btn-success'%>
+            </div>
+          </div>
+        </div>
+      <% end %>    
+    <% end %>
+  </div>
+</div>
